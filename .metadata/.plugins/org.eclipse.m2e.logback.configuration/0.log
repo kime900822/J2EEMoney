@@ -1,0 +1,2 @@
+2017-05-14 17:29:23,866 [Worker-0] WARN  org.eclipse.jgit.util.FS - Exception caught during execution of command '[git, config, --system, --edit]' in '/usr/bin', return code '128', error message 'fatal: Could not switch to '/Library/Developer/CommandLineTools/usr/etc/': No such file or directory
+'
