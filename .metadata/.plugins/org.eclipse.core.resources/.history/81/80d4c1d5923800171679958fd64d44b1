@@ -1,0 +1,14 @@
+
+public class USERModel {
+	private String telephone;
+	private String pass_word;
+	private String balance;
+	private String phone;
+	private String name;
+	private String month_in;
+	private String year_in;
+	private String month_out;
+	private String year_out;
+	
+	
+}
