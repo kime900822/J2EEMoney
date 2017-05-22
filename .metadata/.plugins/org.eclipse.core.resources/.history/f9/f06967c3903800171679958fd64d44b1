@@ -1,9 +1,0 @@
-package kime.model;
-
-public class ADModel {
-	private String id;
-	private String title;
-	private String content;
-	private String uid;
-	
-}
