@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/webdemo" docBase="webdemo" 
+<Context path="/DB_MONEY" docBase="DB_MONEY" 
 
 reloadable="true" crossContext="true"> 
 
 
 
-<Resource name="jdbc/money" auth="Container" type="javax.sql.DataSource" 
+<Resource name="jdbc/DB_MONEY" auth="Container" type="javax.sql.DataSource" 
 maxActive="100" maxIdle="30" maxWait="10000" 
 username="sa" password="zzh.900822" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
 url="jdbc:sqlserver://118.89.188.239;DatabaseName=DB_MONEY"/> 

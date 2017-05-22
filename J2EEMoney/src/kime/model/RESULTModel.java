@@ -16,7 +16,7 @@ public class RESULTModel<T> {
 	private String code;
 	private String message;
 	private String systemTime;
-	private List<T> date;
+	private List<T> data;
 	public String getSuccess() {
 		return success;
 	}
@@ -41,12 +41,11 @@ public class RESULTModel<T> {
 	public void setSystemTime(String systemTime) {
 		this.systemTime = systemTime;
 	}
-	public List<T> getDate() {
-		return date;
+	public List<T> getData() {
+		return data;
 	}
-	public void setDate(List<T> date) {
-		this.date = date;
+	public void setData(List<T> data) {
+		this.data = data;
 	}
-	
 	
 }

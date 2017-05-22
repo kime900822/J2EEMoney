@@ -11,13 +11,14 @@ package kime.help;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Conn {
-	public static PreparedStatement getConn(String sql) throws Exception{
+	public static ResultSet executeSql(String sql) throws Exception{
 		javax.naming.Context ctx=new javax.naming.InitialContext();
-		javax.sql.DataSource ds=(javax.sql.DataSource) ctx.lookup("java:/comp/env/jdbc/money");
+		javax.sql.DataSource ds=(javax.sql.DataSource) ctx.lookup("java:/comp/env/jdbc/DB_MONEY");
 		Connection conn=ds.getConnection();
 		PreparedStatement pstmt=conn.prepareStatement(sql);
-		return pstmt;			
+		return pstmt.executeQuery();			
 	}
 }

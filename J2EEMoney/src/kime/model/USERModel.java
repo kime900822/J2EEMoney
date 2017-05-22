@@ -15,10 +15,6 @@ public class USERModel {
 	private String balance;
 	private String phone;
 	private String name;
-	private String month_in;
-	private String year_in;
-	private String month_out;
-	private String year_out;
 	public String getTelephone() {
 		return telephone;
 	}
@@ -49,30 +45,7 @@ public class USERModel {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getMonth_in() {
-		return month_in;
-	}
-	public void setMonth_in(String month_in) {
-		this.month_in = month_in;
-	}
-	public String getYear_in() {
-		return year_in;
-	}
-	public void setYear_in(String year_in) {
-		this.year_in = year_in;
-	}
-	public String getMonth_out() {
-		return month_out;
-	}
-	public void setMonth_out(String month_out) {
-		this.month_out = month_out;
-	}
-	public String getYear_out() {
-		return year_out;
-	}
-	public void setYear_out(String year_out) {
-		this.year_out = year_out;
-	}
+
 	
 	
 }

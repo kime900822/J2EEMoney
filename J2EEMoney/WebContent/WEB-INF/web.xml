@@ -12,10 +12,29 @@
   
   <resource-ref>
     <description>sqlserver数据库连接池</description>
-    <res-ref-name>jdbc/money</res-ref-name>
+    <res-ref-name>jdbc/DB_MONEY</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
     <res-sharing-scope>Shareable</res-sharing-scope>
   </resource-ref>
   
+  
+  <servlet>
+  	<servlet-name>login</servlet-name>
+  	<servlet-class>kime.api.user.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>login</servlet-name>
+  	<url-pattern>/api/user/login</url-pattern>
+  </servlet-mapping>
+  
+  
+    <servlet>
+  	<servlet-name>getUser</servlet-name>
+  	<servlet-class>kime.api.user.getUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>getUser</servlet-name>
+  	<url-pattern>/api/user/getUser</url-pattern>
+  </servlet-mapping>
 </web-app>
