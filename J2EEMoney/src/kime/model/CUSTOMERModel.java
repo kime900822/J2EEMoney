@@ -1,3 +1,12 @@
+/**
+* FileName: Conn.java
+* 客户类
+*
+* @author 赵舟浩
+    * @Date    2017-05-22
+* @version 1.00
+*/
+
 package kime.model;
 
 public class CUSTOMERModel {

@@ -1,0 +1,14 @@
+package kime.help;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class Conn {
+	public static PreparedStatement getConn(String sql){
+		javax.naming.Context ctx=new javax.naming.InitialContext();
+		javax.sql.DataSource ds=(javax.sql.DataSource) ctx.lookup("java:/comp/env/jdbc/webdb");
+		Connection conn=ds.getConnection();
+		PreparedStatement pstmt=conn.prepareStatement(sql);	
+		
+	}
+}

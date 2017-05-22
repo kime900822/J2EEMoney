@@ -1,3 +1,12 @@
+/**
+* FileName: RESULTModel.java
+* 接口返回类
+*
+* @author 赵舟浩
+    * @Date    2017-05-22
+* @version 1.00
+*/
+
 package kime.model;
 
 import java.util.List;
