@@ -31,7 +31,7 @@
   
     <servlet>
   	<servlet-name>getUser</servlet-name>
-  	<servlet-class>kime.api.user.getUser</servlet-class>
+  	<servlet-class>kime.api.user.GetUser</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>getUser</servlet-name>

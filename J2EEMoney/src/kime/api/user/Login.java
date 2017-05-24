@@ -1,8 +1,12 @@
+
+
 package kime.api.user;
 
 import java.io.IOException;
-import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import kime.help.Conn;
+import kime.db.DBUser;
 import kime.model.RESULTModel;
+import kime.model.USERModel;
 
 public class Login extends HttpServlet {
 
@@ -26,25 +31,20 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		String telephone=request.getParameter("telephone");
 		String pass_word=request.getParameter("pass_word");
-		RESULTModel<String> result=new RESULTModel<>();
+		RESULTModel<USERModel> result=new RESULTModel<>();
 		Gson gson=new Gson();
-		
-		String sql=String.format("select count(1) count from T_USER where TELEPHONE=%S AND PASS_WORD=%S", telephone,pass_word);
+		USERModel u=new USERModel(); 
 		try {
-			ResultSet rs=Conn.executeSql(sql);
-			int rowCount=0;
-			if(rs.next())    
-			{    
-			    rowCount=rs.getInt("count");    
-			}  
-			if (rowCount==0) {
-				result.setCode("2001");
-				result.setMessage("用户名或者密码错误");
-				result.setSuccess("false");
-			}else{
+			u=DBUser.login(telephone, pass_word);
+			if (u.getId()!=null) {
 				result.setCode("2000");
 				result.setMessage("登录成功");
 				result.setSuccess("true");
+
+			}else{
+				result.setCode("2001");
+				result.setMessage("用户名或者密码错误");
+				result.setSuccess("false");
 			}
 		} catch (Exception e) {
 			result.setCode("2002");
@@ -54,7 +54,9 @@ public class Login extends HttpServlet {
 		}
 		
 		result.setSystemTime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
-		result.setData(null);
+		List<USERModel> lu=new ArrayList<>();
+		lu.add(u);
+		result.setData(lu);
 		response.getWriter().write(gson.toJson(result));
 	}
 	

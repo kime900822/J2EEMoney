@@ -15,6 +15,13 @@ public class USERModel {
 	private String balance;
 	private String phone;
 	private String name;
+	private String id;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getTelephone() {
 		return telephone;
 	}

@@ -1,9 +1,8 @@
 package kime.api.user;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.ResultSet;
 import java.util.Calendar;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import kime.db.DBUser;
+import kime.help.Conn;
 import kime.model.RESULTModel;
-import kime.model.USERModel;
 
-public class GetUser extends HttpServlet {
+public class Register extends HttpServlet {
 
 	/**
 	 * 
@@ -25,34 +23,45 @@ public class GetUser extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		response.setContentType("text/html; charset=utf-8");
-		RESULTModel<USERModel> result=new RESULTModel<>();
+		String telephone=request.getParameter("telephone");
+		String pass_word=request.getParameter("pass_word");
+		RESULTModel<String> result=new RESULTModel<>();
 		Gson gson=new Gson();
-		List<USERModel> luser=new ArrayList<>();
 		
+		String sql=String.format("select count(1) count from T_USER where TELEPHONE=%S AND PASS_WORD=%S", telephone,pass_word);
 		try {
-			luser=DBUser.getUser();
-			if (luser.size()==0) {
-				result.setCode("2011");
-				result.setMessage("无数据");
+			ResultSet rs=Conn.executeSql(sql);
+			int rowCount=0;
+			if(rs.next())    
+			{    
+			    rowCount=rs.getInt("count");    
+			}  
+			if (rowCount==0) {
+				result.setCode("2001");
+				result.setMessage("用户名或者密码错误");
 				result.setSuccess("false");
 			}else{
-				result.setCode("2010");
-				result.setMessage("获取成功");
+				result.setCode("2000");
+				result.setMessage("登录成功");
 				result.setSuccess("true");
 			}
 		} catch (Exception e) {
-			result.setCode("2012");
+			result.setCode("2002");
 			result.setMessage(e.getMessage());
 			result.setSuccess("error");
 			e.printStackTrace();
 		}
 		
 		result.setSystemTime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
-		result.setData(luser);
+		result.setData(null);
 		response.getWriter().write(gson.toJson(result));
-	}
-
 	
+	}
+	
+	
+	
+	
+
 }
